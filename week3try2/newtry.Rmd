@@ -1,0 +1,38 @@
+---
+title: "Airquality"
+author: 
+date: "11 11 2018"
+output: ioslides_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##Dataset
+### Head of "airquality"
+
+```{r, message=FALSE}
+#install.packages("plotly")
+library(plotly)
+data("airquality")
+head(airquality)
+```
+
+## Simple plot
+### Temperature vs. ozone (the color represents the month)
+
+```{r, echo=FALSE,message=FALSE, warning=FALSE}
+library(plotly)
+library(ggplot2)
+data("airquality")
+plot_ly(airquality, x = ~ Temp, y = ~ Ozone, type = "scatter", mode = "markers", color = ~ factor(Month)) 
+```
+
+## Plot with sizes 
+### Temperature vs. ozone (the color represents the month and the size represents solar.r)
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+plot_ly(airquality, x = ~ Temp, y = ~ Ozone, type = "scatter", mode = "markers", color = ~ factor(Month), size = ~Solar.R)
+```
